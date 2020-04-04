@@ -3,14 +3,19 @@ import ReactDOM from 'react-dom'
 import './index.css'
 
 class Square extends React.Component { // Клетка
+    constructor(props){ // 1 добавим конструктор к классу, чтобы инициализировать состояние
+        super(props)
+        this.state = {
+            valve: null
+        }
+    }
     render() {
       return (
-        <button className="square"
-            onClick={function(){
-                alert('клик')
-            }}
+        <button 
+            className="square" 
+            onClick={() => this.setState({ value: 'X'})} // 2 мы говорим , что нужно перерендерить Square при каждом клике по <button>
         >
-          {this.props.value}
+            {this.state.value}
         </button>
       );
     }
